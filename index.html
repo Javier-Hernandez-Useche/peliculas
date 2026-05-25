@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="imagenes/icono.png" type="image/x-icon">
+        <title>Sistema de Gestión de Películas PLAY LITE</title>
+    </head>
+    <body>
+            <div id="video-modal" class="video-modal">
+                <div class="video-box">
+                    <span id="cerrar-video">✖</span>
+                    <iframe
+                        id="trailer"
+                        width="80%"
+                        height="400"
+                        src="https://www.youtube.com/embed/0WWzgGyAH6Y?autoplay=1&rel=0&vq=hd1080"
+                        title="Superman Trailer"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <div id="login-modal" class="modal-login">
+                <div class="login-box">
+                    <h2>Iniciar Sesión</h2>
+
+                    <input type="text" id="usuario" placeholder="Usuario">
+                    <input type="password" id="password" placeholder="Contraseña">
+
+                    <button id="login-submit">Entrar</button>
+                    <button id="login-close">Cerrar</button>
+
+                    <p id="login-error"></p>
+                </div>
+            </div>
+        <header class="header" id="inicio">
+            <div class="menu container">
+                <a href="#peliculas" class="logo">Películas PLAY LITE</a>
+                <input type="checkbox" id="menu"/>
+                <label for="menu">
+                    <img src="imagenes/menu.png" alt="menu" class="menu-icono">
+                </label>
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="#inicio"></a></li>
+                        <li><a href="#peliculas">Películas</a></li>
+                        <li><a href="#peliculas">Géneros</a></li>
+                        <li><a href="#peliculas">Actores</a></li>
+                        <li><a href="#peliculas">Año</a></li>
+                        <li><a href="#peliculas">Directores</a></li> 
+                    </ul> 
+                </nav> 
+                <button class="btn-1" id="btn-login">Iniciar Sesión</button>
+            </div>
+            <div class="header-content container">
+                <div class="header-1">
+                    <img src="imagenes/superman.png" alt="imagen">
+                    <a href="#peliculas" class="btn-2">Ver Películas</a>
+                </div>
+                <div class="header-2">
+                    <h1>¡Las mejores<br>películas para ti!</h1>
+                    <img src="imagenes/play.png" alt="play" id="btn-play">
+                </div>
+            </div>
+        </header>
+        <section class="crud-section">
+                <div class="header-inner">
+                    <div class="logo-panel">
+                        <span class="logo-icon">🎬</span>
+                        <div class="logo-text">
+                            <span class="logo-title">PLAY LITE</span>
+                            <span class="logo-sub">Sistema de Gestión de Películas</span>
+                        </div>
+                    </div>
+                    <div class="counter-badge">
+                        <span id="contador-total">0</span>
+                        <span class="counter-label">películas</span>
+                    </div>
+                </div>
+                <main class="main-layout">
+                    <aside class="panel-form">
+                        <div class="panel-header">
+                            <h2 id="form-titulo-panel">Registrar Película</h2>
+                            <div class="panel-line"></div>
+                        </div>
+                        <form id="formulario-pelicula" novalidate>
+
+                            <input type="hidden" id="pelicula-id">
+
+                            <div class="campo-grupo">
+                                <label for="titulo">
+                                    Título <span class="requerido">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    id="titulo"
+                                    placeholder="Ingrese el título de la película"
+                                    autocomplete="off"
+                                >
+                                <span class="error-msg" id="error-titulo"></span>
+                            </div>
+                            <div class="campo-grupo">
+                                <label for="director">
+                                    Director <span class="requerido">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    id="director"
+                                    placeholder="Ingrese el nombre del director"
+                                    autocomplete="off"
+                                >
+                                <span class="error-msg" id="error-director"></span>
+                            </div>
+                            <div class="campo-grupo">
+                                <label for="anio">
+                                    Año <span class="requerido">*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    id="anio"
+                                    placeholder="Ingrese el año de estreno"
+                                    min="1900"
+                                    max="2026"
+                                >
+                                <span class="error-msg" id="error-anio"></span>
+                            </div>
+                            <div class="campo-grupo">
+                                <label for="categoria">
+                                    Categoría <span class="requerido">*</span>
+                                </label>
+                                <select id="categoria">
+                                    <option value="">
+                                        Seleccionar categoría 
+                                    </option>
+                                    <option value="Acción">Acción</option>
+                                    <option value="Comedia">Comedia</option>
+                                    <option value="Drama">Drama</option>
+                                    <option value="Terror">Terror</option>
+                                    <option value="Ciencia Ficción">Ciencia Ficción</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Animación">Animación</option>
+                                    <option value="Documental">Documental</option>
+                                </select>
+                                <span class="error-msg" id="error-categoria"></span>
+                            </div>
+
+                            <div class="campo-grupo">
+                                <label for="puntuacion">Puntuación</label>
+                                <div class="stars-input" id="stars-input">
+                                    <span class="star" data-valor="1">★</span>
+                                    <span class="star" data-valor="2">★</span>
+                                    <span class="star" data-valor="3">★</span>
+                                    <span class="star" data-valor="4">★</span>
+                                    <span class="star" data-valor="5">★</span>
+                                </div>
+                                <input type="hidden" id="puntuacion" value="0">
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label for="sinopsis">
+                                    Sinopsis
+                                    <span class="opcional">(opcional)</span>
+                                </label>
+                                <textarea
+                                    id="sinopsis"
+                                    rows="3"
+                                    placeholder="Haz una breve descripción de la película..."
+                                ></textarea>
+                            </div>
+                           
+                            <div class="form-acciones">
+                                <button
+                                    type="submit"
+                                    class="btn btn-primario"
+                                    id="btn-guardar"
+                                >
+                                    ✦ Guardar Película
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-secundario"
+                                    id="btn-cancelar"
+                                    style="display:none;"
+                                >
+                                    Cancelar
+                                </button>
+                            </div>
+                        </form>
+                    </aside>
+                    <section class="panel-lista">
+
+                        <div class="barra-controles">
+                            <div class="busqueda-wrapper">
+                                <span class="icono-busqueda">🔍</span>
+                                <input
+                                    type="text"
+                                    id="buscador"
+                                    placeholder="Buscar película..."
+                                    autocomplete="off"
+                                >
+                            </div>
+                            <select id="filtro-categoria" class="filtro-select">
+                                <option value="Todas">
+                                    Todas las categorías
+                                </option>
+                                <option value="Acción">Acción</option>
+                                <option value="Comedia">Comedia</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Terror">Terror</option>
+                                <option value="Ciencia Ficción">Ciencia Ficción</option>
+                            </select>
+                            <select id="ordenar-por" class="filtro-select">
+                                <option value="reciente">Más recientes</option>
+                                <option value="titulo">Título A-Z</option>
+                                <option value="anio-asc">Año ↑</option>
+                                <option value="anio-desc">Año ↓</option>
+                                <option value="puntuacion">Mejor puntuación</option>
+                            </select>
+                        </div>
+                        <div class="info-resultados">
+                            <span id="texto-resultados">
+                                Mostrando todas las películas
+                            </span>
+                        </div>
+                        <div
+                            class="grilla-peliculas"
+                            id="grilla-peliculas"
+                        ></div>
+                        <div
+                            class="estado-vacio"
+                            id="estado-vacio"
+                            style="display:none;"
+                        >
+                            <div class="vacio-icono">🎭</div>
+                            <h3>Sin resultados</h3>
+                            <p>
+                                No se encontraron películas.
+                            </p>
+                        </div>
+                        <div class="estado-inicial" id="estado-inicial">
+                            <div class="inicial-icono">🎬</div>
+                            <h3>Agrega una nueva colección de películas</h3>
+                            <p>
+                                Registra una película usando el formulario de la izquierda.
+                            </p>
+                        </div>
+                    </section>
+                </main>
+                <div
+                    class="modal-overlay"
+                    id="modal-eliminar"
+                    style="display:none;"
+                >
+                    <div class="modal-caja">
+                        <div class="modal-icono">⚠️</div>
+                        <h3>¿Eliminar película?</h3>
+                        <p id="modal-nombre-pelicula"></p>
+                        <div class="modal-acciones">
+                            <button
+                                class="btn btn-peligro"
+                                id="btn-confirmar-eliminar"
+                            >
+                                Sí, eliminar
+                            </button>
+                            <button
+                                class="btn btn-secundario"
+                                id="btn-cancelar-eliminar"
+                            >
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="toast" id="toast"></div>
+        </section>
+
+        <section class="movies container" id="peliculas">
+            <h2>Películas mas vistas</h2>
+            <hr>
+            <div class="box-container1">
+                <div class="box-1">
+                    <div class="content">
+                        <img src="imagenes/1.jpg" alt="iron man3">
+                        <h3>Iron Man 3</h3>
+                        <p>Cuando el mundo de Tony Stark es destrozado por un temible terrorista llamado el Mandarín, comienza una odisea de reconstrucción y venganza.2013
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-1">
+                    <div class="content">
+                        <img src="imagenes/2.jpg" alt="Thor: Love and Thunder">
+                        <h3>Thor: Love and Thunder</h3>
+                        <p>Thor reclama la ayuda de Valquiria, Korg y su exnovia Jane Foster para luchar contra Gorr el Dios Carnicero, que pretende extinguir a los dioses.2022
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-1">
+                    <div class="content">
+                        <img src="imagenes/3.jpg" alt="Thor Ragnarok">
+                        <h3>Thor: Ragnarok</h3>
+                        <p>Thor está cautivo en el planeta Sakaar, y debe embarcarse en una carrera contra reloj para volver a Asgard y detener Ragnarök, la destrucción del mundo, a manos de la despiadada villana Hela.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-1">
+                    <div class="content">
+                        <img src="imagenes/4.jpg" alt="Resident Evil: Bienvenidos a Raccoon City">
+                        <h3>Resident Evil: Bienvenidos a Raccoon City</h3>
+                        <p>Ambientada en 1998, esta historia de orígenes explora los secretos de la misteriosa Mansión Spencer y de la malograda Raccoon City.2021
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-1">
+                    <div class="content">
+                        <img src="imagenes/5.jpg" alt="La vieja guardia">
+                        <h3>La vieja guardia</h3>
+                        <p>Narra la historia de un pequeño grupo de mercenarios inmortales encubiertos, que deben luchar para mantener unido a su equipo cuando descubren la existencia de un nuevo tipo de ser inmortal.2020
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-1">
+                    <div class="content">
+                        <img src="imagenes/6.jpg" alt="Spectral">
+                        <h3>Spectral</h3>
+                        <p>Cuando una fuerza sobrenatural ataca a una ciudad devastada por la guerra, un ingeniero y un equipo de fuerzas especiales se preparan para detener a la terrible amenaza.2016
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-1">
+                    <div class="content">
+                        <img src="imagenes/7.jpg" alt="300: El origen de un imperio">
+                        <h3>300: El origen de un imperio</h3>
+                        <p>El general griego Temístocles de Atenas lidera la carga naval contra las fuerzas invasoras persas dirigidas por el dios mortal Jerjes y Artemisia, la vengativa comandante de la armada persa.2014
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-1">
+                    <div class="content">
+                        <img src="imagenes/8.jpg" alt="Proyecto Power">
+                        <h3>Proyecto Power</h3>
+                        <p>Por las calles de Nueva Orleans empieza a circular un rumor: la existencia de una misteriosa pastilla capaz de desbloquear superpoderes latentes exclusivos de cada persona que la ingiere.2020
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="load-more" id="load-more-1">Cargar más...</div>
+        </section>
+
+        <section class="movies container">
+            <h2>Películas Acción</h2>
+            <hr>
+            <div class="box-container2">
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/9.jpg" alt=" Venom: Habrá matanza">
+                        <h3> Venom: Habrá matanza</h3>
+                        <p>Eddie Brock intenta relanzar su carrera entrevistando al asesino en serie Cletus Kasady, que se convierte en el huésped del simbionte Carnage y escapa de la cárcel tras una ejecución fallida.2021
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/10.jpg" alt="Venom">
+                        <h3>Venom</h3>
+                        <p>Cuando Eddie Brock adquiere las capacidades de un simbionte, tendrá que liberar a su alter ego Venom para salvar su vida.2018
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/11.jpg" alt="Spider-Man: No Way Home">
+                        <h3>Spider-Man: No Way Home</h3>
+                        <p>Con la identidad de Spider-Man ahora revelada, Peter recurre al Doctor Strange en busca de ayuda. Algo sale mal y el multiverso se convierte en la mayor amenaza. Ahora Peter debe descubrir qué significa realmente ser Spider-Man.2021
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/12.jpg" alt="Vengadores: Infinity War">
+                        <h3>Vengadores: Infinity War</h3>
+                        <p>Los Vengadores y sus aliados estarán dispuestos a sacrificarlo todo para derrotar al poderoso Thanos antes de que su devastación y ruina ponga fin al universo.2018
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/13.jpg" alt="Vengadores: Endgame">
+                        <h3>Vengadores: Endgame</h3>
+                        <p>Después de que Thanos haya aniquilado a la mitad del universo, los Vengadores supervivientes deben hacer todo lo posible por deshacer tal atrocidad..2019
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/14.jpg" alt="Mad Max - Furia en la carretera:Que hermoso día">
+                        <h3>Mad Max - Furia en la carretera:Que hermoso día</h3>
+                        <p>En un mundo postapocalíptico donde la gasolina y el agua son productos preciosos, el taciturno Max lucha por abrirse camino a través del desierto. Allí, se encuentra con un grupo de mujeres que huyen del tirano Immortan Joe. Max pronto se ve atrapado en medio de una brutal guerra de carreteras.2015
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/15.jpg" alt="Duro de Matar 4.0">
+                        <h3>Duro de Matar 4.0</h3>
+                        <p>Estados Unidos sufre un nuevo ataque terrorista, esta vez a través de computadoras. Un hacker logra irrumpir en la infraestructura computarizada que controla las comunicaciones, el transporte y la energía del país, amenazando con provocar un apagón masivo. El atacante planeó cada paso involucrado, pero no contó con que John McClane (Bruce Willis), un policía de la vieja escuela, fuera llamado para confrontarlo.2007
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/16.jpg" alt="Duro de Matar: Un buen día para morir">
+                        <h3>Duro de Matar: Un buen día para morir</h3>
+                        <p>John McClane viaja a Rusia para ayudar a su aparentemente díscolo hijo, Jack, solo para descubrir que Jack es un agente de la CIA que trabaja de forma encubierta, lo que hace que padre e hijo formen equipo contra las fuerzas del crimen.2013
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/17.jpg" alt="Life: Vida">
+                        <h3>Life: Vida</h3>
+                        <p>Un equipo de científicos a bordo de la Estación Espacial Internacional descubre una forma de vida de rápida evolución que causó la extinción en Marte y que ahora amenaza toda la vida en la Tierra.2017
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/18.jpg" alt="Morbius">
+                        <h3>Morbius</h3>
+                        <p>El bioquímico Michael Morbius intenta curarse de una rara enfermedad sanguínea pero en su lugar se infecta con un tipo de vampirismo.2022
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/0.jpg" alt="Oxicon">
+                        <h3>Oxicon</h3>
+                        <p>Despues de sobrevivir a una peste que mató a toda su familia en santander, Oxi decice radicarse en Bogotá a vigilar, de dia duerme y de noche también. Lo que nadie sospecha es que detrás de ese ociquito tan tierno y oloroso, se esconde un super poder letal.2026
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-2">
+                    <div class="content">
+                        <img src="imagenes/00.jpg" alt="Super Pedo 67">
+                        <h3>Super Pedo 67</h3>
+                        <p>La bioquímica Valery Hernández intenta escapar de una rafaga de pedos en su hogar, cuenta la leyenda quie solo una muelera de we wech podria aplacar a eta tormenta.2026
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="load-more" id="load-more-2">Cargar más...</div>
+        </section>
+
+        <section class="movies container">
+            <h2>Películas Estreno</h2>
+            <hr>
+            <div class="box-container3">
+
+                <div class="box-3">
+                    <div class="content">
+                        <img src="imagenes/17.jpg" alt="Life: Vida">
+                        <h3>Life: Vida</h3>
+                        <p>Un equipo de científicos a bordo de la Estación Espacial Internacional descubre una forma de vida de rápida evolución que causó la extinción en Marte y que ahora amenaza toda la vida en la Tierra.2017
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-3">
+                    <div class="content">
+                        <img src="imagenes/18.jpg" alt="Morbius">
+                        <h3>Morbius</h3>
+                        <p>El bioquímico Michael Morbius intenta curarse de una rara enfermedad sanguínea pero en su lugar se infecta con un tipo de vampirismo.2022
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-3">
+                    <div class="content">
+                        <img src="imagenes/19.jpg" alt="Bruja Escarlata y Visión">
+                        <h3>Bruja Escarlata y Visión</h3>
+                        <p>La Bruja Escarlata y Vision, dos seres superpoderosos con una vida familiar ideal, sospechan que no todo es como aparenta.2021
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-3">
+                    <div class="content">
+                        <img src="imagenes/20.jpg" alt="The Batman">
+                        <h3>The Batman</h3>
+                        <p>Cuando Enigma, un sádico asesino en serie, comienza a asesinar a las principales figuras políticas de Gotham, Batman se ve obligado a investigar la corrupción oculta de la ciudad y a cuestionar la participación de su familia.2022
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-3">
+                    <div class="content">
+                        <img src="imagenes/21.jpg" alt="Bohemian Rhapsody">
+                        <h3>Bohemian Rhapsody</h3>
+                        <p>La historia de la legendaria banda de rock Queen y su cantante principal, Freddie Mercury, y los eventos que llevaron a su famoso concierto en Live Aid en 1985.2018
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-3">
+                    <div class="content">
+                        <img src="imagenes/22.jpg" alt="Rogue One: Una historia de Star Wars">
+                        <h3>Rogue One: Una historia de Star Wars</h3>
+                        <p>La hija de un científico imperial se une a la Alianza Rebelde en una arriesgada jugada para robar los planos de la Estrella de la Muerte.2016
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-3">
+                    <div class="content">
+                        <img src="imagenes/23.jpg" alt="Viuda Negra">
+                        <h3>Viuda Negra</h3>
+                        <p>Natasha Romanoff se enfrenta a las partes más oscuras de su vida cuando surge una peligrosa conspiración vinculada con su pasado.2021
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box-3">
+                    <div class="content">
+                        <img src="imagenes/24.jpg" alt="Black Adam">
+                        <h3>Black Adam</h3>
+                        <p>Black Adam es liberado de su tumba casi 5.000 años después de haber sido encarcelado y recibir sus poderes de los antiguos dioses, ahora está listo para desatar su forma única de justicia en el mundo.2022
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="load-more" id="load-more-3">Cargar más...</div>
+        </section>
+    <footer class="footer container">
+        <h3>¡Gracias por visitar Películas PLAY LITE!</h3>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li class="contacto-hover"><a href="#contacto">Sobre Nosotros</a>
+                <div class="contacto-box">
+                    <h5>Sobre Nosotros</h5>
+                    <h3>Objetivos</h3>
+                    <p>Mejorar continuamente la experiencia del usuario,
+                        integrar nuevas funcionalidades y ampliar el catálogo
+                        cinematográfico disponible en PLAY LITE.
+                    </p>
+                </div>
+            </li>
+            
+            <li class="contacto-hover"><a href="#contacto">Contáctenos</a>
+                <div class="contacto-box">
+                    <h5>🎬 Información de Contacto</h5>
+                    <p>📱 WhatsApp: 320 555 8899</p>
+                    <p>📷 Instagram: @playlite</p>
+                    <p>📘 Facebook: Películas PLAY LITE</p>
+                    <p>✉️ playlite@gmail.com</p>
+                    <p>📍 Bogotá, Colombia</p>
+                </div>
+            </li>
+        </ul>
+    </footer>
+        <h4>© 2026 Películas PLAY LITE. Todos los derechos reservados.</h4>
+        <script src="script.js"></script>
+   </body>
+</html>
