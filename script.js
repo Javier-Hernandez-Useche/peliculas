@@ -367,9 +367,11 @@ const trailer = document.getElementById("trailer");
 
 btnPlay.addEventListener("click", () => {
     videoModal.style.display = "flex";
-    trailer.src = "https://www.youtube.com/embed/0WWzgGyAH6Y?autoplay=1";
+    trailer.src =
+    "https://www.youtube.com/embed/0WWzgGyAH6Y?autoplay=1&rel=0&modestbranding=1";
 });
+
 cerrarVideo.addEventListener("click", () => {
     videoModal.style.display = "none";
-    trailer.src = "https://www.youtube.com/embed/0WWzgGyAH6Y";
+    trailer.src = "";
 });
