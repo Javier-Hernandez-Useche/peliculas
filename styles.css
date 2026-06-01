@@ -132,7 +132,8 @@ button{
 
 .btn-1:hover,
 .btn-2:hover{
-    background-color: #d91f19;
+    background-color: #bc1812;
+    color: white;
 }
 
 /* =========================
@@ -175,6 +176,8 @@ button{
     border: none;
     outline: none;
     padding: 0;
+    margin-top: 40px;
+    margin-left: auto;
     filter: drop-shadow(0 0 25px #ff2f28);
     box-shadow: none;
 }
@@ -452,10 +455,13 @@ hr{
 .btn-primario{
     background-color: #ff2f28;
     color: #ffffff;
+    border: 1px solid black;
 }
 
 .btn-primario:hover{
-    background-color: #d91f19;
+    background-color:white;
+    border: 1px solid #ff2f28;
+    color: #ff2f28;
 }
 
 .btn-secundario{
@@ -623,25 +629,26 @@ hr{
     border: none;
 }
 .login-box button{
-    color: #000000;
+    color: red;
+    background-color: transparent;
     margin-top: 10px;
     padding: 10px;
     width: 100%;
     cursor: pointer;
     border-radius: 8px;
     font-size: 18px;
-    border: solid 1px #0000003d;
+    border: solid 1px red;
     transition: 0.3s;
 }
 .login-box button:hover{
-    color: #ffffff;
+    color: white;
     background-color: #ff2f28;
     margin-top: 10px;
     padding: 10px;
     width: 100%;
     cursor: pointer;
     border-radius: 8px;
-    border: solid 1px #ffffff;
+    border: solid 1px black;
 }
 #login-error{
     color: red;
@@ -732,7 +739,7 @@ h4{
     border: 1px solid #ff2f28;
     border-radius: 15px;
 
-    padding: 20px;
+    padding: 30px;
 
     display: none;
 
@@ -782,14 +789,23 @@ h4{
     }
 
     .menu .navbar{
-        position: absolute;
-        top: 100%; 
-        left: 0; 
-        right: 0; 
-        
-        background-color: #030303; 
-        
-        display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 60%;
+    max-width: 350px;
+    min-width: 220px;
+    padding: 5px;
+
+    background-color: #030303;
+    border: 1px solid #ff2f28;
+    border-radius: 15px;
+
+    display: none;
+
+    z-index: 1000;
     }
 
     .menu .navbar ul{
@@ -798,7 +814,11 @@ h4{
 
     .menu .navbar ul li{
         width: 100%;
+        text-align: center;
     }
+    .menu .navbar ul li a{
+        padding: 10px 15px;
+}
 
     #menu:checked ~ .navbar{
         display: block;
@@ -924,4 +944,26 @@ h4{
     .inicial-icono{
         font-size: 50px;
     }
+    .content img{
+        margin: 0 auto 15px auto;
+        width: 95%;
+        max-width: 380px;
+    }
+
+    .content{
+        text-align: center;
+    }
+    .load-more{
+        margin: 30px auto 10px auto;
+        align-self: center;
+    }
+    .content p{
+        text-align: center;
+        padding: 0 15px;
+        font-size: 16px;
+    }
+    .movies h2{
+        margin-left: 10px;
+    }
+
 }
