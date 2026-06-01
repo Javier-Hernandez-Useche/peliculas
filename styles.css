@@ -785,20 +785,32 @@ h4{
     .menu .navbar{
         position: absolute;
         top: 100%;
-        left: 0;
-        right: 0;
+        right: 20px;
+        left: auto;
+        
+        width: 250px;
 
         background-color: #030303;
 
+        background-color: #030303;
+        border: 1px solid #ff2f28;
+        border-radius: 15px;
+
         display: none;
+        z-index: 1000;
     }
 
     .menu .navbar ul{
         flex-direction: column;
+        padding: 10px 0;
     }
 
     .menu .navbar ul li{
         width: 100%;
+    }
+    .menu .navbar ul li a{
+    padding: 15px 20px;
+    text-align: left;
     }
 
     #menu:checked ~ .navbar{
