@@ -348,12 +348,17 @@ document.addEventListener("DOMContentLoaded", () => {
     loginClose.addEventListener("click", () => {
         modalLogin.style.display = "none";
         loginError.textContent = "";
+        usuario.value = "";
+        password.value = "";
     });
 
     loginSubmit.addEventListener("click", () => {
         if (usuario.value === USER && password.value === PASS) {
             alert("Bienvenido");
             modalLogin.style.display = "none";
+            usuario.value = "";
+            password.value = "";
+            loginError.textContent = "";
         } else {
             loginError.textContent = "❌ Usuario o contraseña incorrectos";
         }
@@ -367,26 +372,26 @@ const trailer = document.getElementById("trailer");
 
 btnPlay.addEventListener("click", () => {
     videoModal.style.display = "flex";
-    trailer.src =
-    "https://www.youtube.com/embed/0WWzgGyAH6Y?autoplay=1&rel=0&modestbranding=1";
+    trailer.src = "https://www.youtube.com/embed/0WWzgGyAH6Y?autoplay=1&rel=0&modestbranding=1";
 });
-
 cerrarVideo.addEventListener("click", () => {
     videoModal.style.display = "none";
     trailer.src = "";
 });
 
-const checkboxMenu = document.getElementById("menu");
-const navbar = document.querySelector(".navbar");
-const botonMenu = document.querySelector('label[for="menu"]');
 
-document.addEventListener("click", function(event) {
+const menuCheck = document.getElementById("menu");
 
-    if (
-        !navbar.contains(event.target) &&
-        !botonMenu.contains(event.target)
-    ) {
-        checkboxMenu.checked = false;
+window.addEventListener("scroll", () => {
+    menuCheck.checked = false;
+});
+const menuCheckBox = document.getElementById("menu");
+const menuContainer = document.querySelector(".menu");
+
+document.addEventListener("click", (e) => {
+
+    if (!menuContainer.contains(e.target)) {
+        menuCheckBox.checked = false;
     }
 
 });
