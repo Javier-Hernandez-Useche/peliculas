@@ -376,3 +376,17 @@ cerrarVideo.addEventListener("click", () => {
     trailer.src = "";
 });
 
+const checkboxMenu = document.getElementById("menu");
+const navbar = document.querySelector(".navbar");
+const botonMenu = document.querySelector('label[for="menu"]');
+
+document.addEventListener("click", function(event) {
+
+    if (
+        !navbar.contains(event.target) &&
+        !botonMenu.contains(event.target)
+    ) {
+        checkboxMenu.checked = false;
+    }
+
+});
