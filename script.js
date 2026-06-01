@@ -80,13 +80,35 @@ let peliculaEditando = null;
 let peliculaEliminar = null;
 
 const estrellas = document.querySelectorAll(".star");
+
 estrellas.forEach(star => {
+
+    // Hover
+    star.addEventListener("mouseover", () => {
+        let valor = star.dataset.valor;
+
+        estrellas.forEach(s => {
+            if (s.dataset.valor <= valor) {
+                s.style.color = "gold";
+            } else {
+                s.style.color = "#666";
+            }
+        });
+    });
+
+    // Click
     star.addEventListener("click", () => {
         let valor = star.dataset.valor;
         puntuacionInput.value = valor;
         actualizarEstrellas(valor);
     });
+
 });
+document.getElementById("stars-input")
+.addEventListener("mouseleave", () => {
+    actualizarEstrellas(puntuacionInput.value || 0);
+});
+
 function actualizarEstrellas(valor) {
     estrellas.forEach(star => {
         if (star.dataset.valor <= valor) {
@@ -94,9 +116,7 @@ function actualizarEstrellas(valor) {
         } else {
             star.style.color = "#666";
         }
-
     });
-
 }
 function limpiarErrores() {
     document.getElementById("error-titulo").textContent = "";
