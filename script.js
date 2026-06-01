@@ -375,17 +375,4 @@ cerrarVideo.addEventListener("click", () => {
     videoModal.style.display = "none";
     trailer.src = "";
 });
-const checkboxMenu = document.getElementById("menu");
-const navbar = document.querySelector(".navbar");
-const botonMenu = document.querySelector('label[for="menu"]');
 
-document.addEventListener("click", function(e) {
-
-    const clicDentroMenu = navbar.contains(e.target);
-    const clicBotonMenu = botonMenu.contains(e.target);
-
-    if (!clicDentroMenu && !clicBotonMenu) {
-        checkboxMenu.checked = false;
-    }
-
-});
