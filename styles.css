@@ -788,20 +788,15 @@ h4{
         width: 250px;
         background: #030303;
         border: 1px solid #ff2f28;
-        z-index: 1000;
+        display: none;
     }
 
     .menu .navbar ul{
         flex-direction: column;
-        padding: 10px 0;
     }
 
     .menu .navbar ul li{
         width: 100%;
-    }
-    .menu .navbar ul li a{
-    padding: 15px 20px;
-    text-align: left;
     }
 
     #menu:checked ~ .navbar{
