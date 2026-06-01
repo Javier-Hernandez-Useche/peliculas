@@ -434,6 +434,10 @@ hr{
 .star:hover{
     color: gold;
 }
+.star:hover,
+.star:hover ~ .star{
+    color: #666;
+}
 
 /* =========================
    ACCIONES
