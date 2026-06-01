@@ -1,4 +1,3 @@
-
 let loadMoreBtn1 = document.querySelector('#load-more-1');
 let currentItem1 = 4;
 loadMoreBtn1.onclick = () => {
@@ -104,6 +103,7 @@ estrellas.forEach(star => {
     });
 
 });
+
 document.getElementById("stars-input")
 .addEventListener("mouseleave", () => {
     actualizarEstrellas(puntuacionInput.value || 0);
@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginSubmit.addEventListener("click", () => {
         if (usuario.value === USER && password.value === PASS) {
-            alert("Bienvenido");
+            alert("Bienvenido a PLAY LITE");
             modalLogin.style.display = "none";
             usuario.value = "";
             password.value = "";
