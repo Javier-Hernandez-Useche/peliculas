@@ -783,19 +783,11 @@ h4{
 
     .menu .navbar{
         position: absolute;
-        top: 100%;
-        right: 20px;
-        left: auto;
-        
-        width: 60%;
-
-        background-color: #030303;
-
-        background-color: #030303;
+        top: 70px;
+        right: 0;
+        width: 250px;
+        background: #030303;
         border: 1px solid #ff2f28;
-        border-radius: 15px;
-
-        display: none;
         z-index: 1000;
     }
 
